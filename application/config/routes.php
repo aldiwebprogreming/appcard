@@ -56,5 +56,9 @@ $route['translate_uri_dashes'] = FALSE;
 $route['data-buyer'] = 'Data_user/index';
 $route['send-card'] = "Data_user/send_card";
 $route['data-ultah'] = "Data_user/dataultah";
+$route['data-admin'] = "Data_user/data_admin";
+$route['tambah-admin'] = "Data_user/add_admin";
+$route['data-send'] = "Data_user/data_send";
+
 
 

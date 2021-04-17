@@ -9,6 +9,9 @@
 		function __construct()
 		{
 			parent::__construct();
+			if ($this->session->userdata('username') == NULL) {
+			redirect('login/');
+			}
 		}
 
 		function index(){
@@ -26,23 +29,25 @@
 
 		function send_card(){
 
-			$date  = date("m/d/Y");
-			$dua_hari= mktime(0,0,0,date("n"),date("j")+2,date("Y"));
-			$up = date("m/d/", $dua_hari);
+			// $date  = date("m/d/Y");
+			// $dua_hari= mktime(0,0,0,date("n"),date("j")+2,date("Y"));
+			// $up = date("m/d/", $dua_hari);
 
-			$this->db->like('BirthDate', $up);
+			$date = date('m/d');
+
+			$this->db->like('BirthDate', $date);
 			$get = $this->db->get('tbl_buyer')->result_array();
 		
 			foreach ($get as $list) {
 			
 
 				$data = [
-					'nama_user' => $list['UserName'],
+					'nama_user' => $list['FirtsName'],
 					'keterangan' => $list['Email'],
 					'tgl_ultah' => $list['BirthDate'],
 				];
 
-				$nama = $list['UserName'];
+				$nama = $list['FirtsName'];
 				$email = $list['Email'];
 
 				$this->_kirimEmail($nama, $email);
@@ -108,16 +113,17 @@
 			$data['title'] = "Data ultah";
 			$data['sub_title'] = "Data Ultah Hari ini";
 
-			$date  = date("m/d/Y");
-			$dua_hari= mktime(0,0,0,date("n"),date("j")+2,date("Y"));
-			$up = date("m/d/", $dua_hari);
+			// $date  = date("m/d/Y");
+			// $dua_hari= mktime(0,0,0,date("n"),date("j")+2,date("Y"));
+			// $up = date("m/d/", $dua_hari);
 
-			echo $up;
+			// echo $up;
+			$date = date('m/d');
 
-			$this->db->like('BirthDate', $up);
+			$this->db->like('BirthDate', $date);
 			$data['ultah'] = $this->db->get('tbl_buyer')->result_array();
 
-			$this->db->like('BirthDate', $up);
+			$this->db->like('BirthDate', $date);
 			$data['row'] = $this->db->get('tbl_buyer')->num_rows();
 
 			$this->load->view('template/header', $data);
@@ -126,6 +132,80 @@
 
 
 		}
+
+		function add_admin(){
+
+				$data['title'] = "Tambah admin";
+				$data['sub_title'] = "Tambah Admin";
+
+				$this->load->view('template/header', $data);
+				$this->load->view('Home/add_admin', $data);
+				$this->load->view('template/footer');
+				
+
+				
+			}
+
+			function add_action(){
+				if ($this->input->post('kirim')) {
+
+					$pass = password_hash($this->input->post('pass'), PASSWORD_DEFAULT);
+					
+					$data = [
+						'username' => $this->input->post('username'),
+						'pass' => $pass,
+						'role' => $this->input->post('role')
+
+					];
+
+					$input = $this->db->insert('login', $data);
+					if ($input== true) {
+						$this->session->set_flashdata('message', 'swal("Sukses!", "Data anda berhasil di tambah", "success");');
+				redirect('data-admin');
+						
+					}
+				}
+			}
+
+
+			function data_admin(){
+
+				$data['title'] = "Data admin";
+				$data['sub_title'] = "Data Admin";
+				$data['admin'] = $this->db->get('login')->result_array();
+
+				$this->load->view('template/header', $data);
+				$this->load->view('Home/data_admin', $data);
+				$this->load->view('template/footer');
+
+
+			}
+
+
+			function hapus(){
+
+				$id = $this->input->get('id');
+
+				$this->db->where('id', $id);
+				$this->db->delete('login');
+				$this->session->set_flashdata('message', 'swal("Sukses!", "Data Berhasil dihapus", "success");');
+				redirect('data-admin');
+			}
+
+
+			function data_send(){
+
+				$data['title'] = "Data send";
+				$data['sub_title'] = "Data Send Email";
+				$data['send'] = $this->db->get('tbl_ultah')->result_array();
+
+				$this->load->view('template/header', $data);
+				$this->load->view('Home/data_send', $data);
+				$this->load->view('template/footer');
+			}
+
+
+ 		
 
 	 
 	}

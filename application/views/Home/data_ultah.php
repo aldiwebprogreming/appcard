@@ -64,7 +64,7 @@
                <?php } else { ?>
                       <a href="<?= base_url() ?>data_user/send_card" class="btn btn-primary btn-lg btn-block">Send Email </a>
 
-                      
+
                   <?php } ?>
 
 

@@ -17,7 +17,7 @@
                                 </div>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
-                                    <form method="post" action="<?= base_url() ?>login/add_action">
+                                    <form method="post" action="<?= base_url() ?>Data_user/add_action">
 
                                           <div class="form-group">
                                             <label for="exampleInputEmail1">Username</label>

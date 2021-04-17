@@ -9,6 +9,7 @@
 			function __construct()
 			{
 				parent:: __construct();
+				
 			}
 
 			function index(){
@@ -49,64 +50,13 @@
 				
 			}
 
-			function add_admin(){
+			 function logout(){
 
-				$data['title'] = "Tambah admin";
-				$data['sub_title'] = "Tambah Admin";
+			$this->session->unset_userdata('username');
+			redirect('login/');
+		}
 
-				$this->load->view('template/header', $data);
-				$this->load->view('Home/add_admin', $data);
-				$this->load->view('template/footer');
-				
-
-				
-			}
-
-			function add_action(){
-				if ($this->input->post('kirim')) {
-
-					$pass = password_hash($this->input->post('pass'), PASSWORD_DEFAULT);
-					
-					$data = [
-						'username' => $this->input->post('username'),
-						'pass' => $pass,
-						'role' => $this->input->post('role')
-
-					];
-
-					$input = $this->db->insert('login', $data);
-					if ($input== true) {
-						$this->session->set_flashdata('message', 'swal("Sukses!", "Data anda berhasil di tambah", "success");');
-				redirect('login/data_admin');
-						
-					}
-				}
-			}
-
-
-			function data_admin(){
-
-				$data['title'] = "Data admin";
-				$data['sub_title'] = "Data Admin";
-				$data['admin'] = $this->db->get('login')->result_array();
-
-				$this->load->view('template/header', $data);
-				$this->load->view('Home/data_admin', $data);
-				$this->load->view('template/footer');
-
-
-			}
-
-
-			function hapus(){
-
-				$id = $this->input->get('id');
-
-				$this->db->where('id', $id);
-				$this->db->delete('login');
-				$this->session->set_flashdata('message', 'swal("Sukses!", "Data Berhasil dihapus", "success");');
-				redirect('login/data_admin');
-			}
+			
 		}
 
  ?>

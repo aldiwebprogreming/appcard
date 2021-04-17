@@ -39,9 +39,9 @@
         <div id="wrapper">
 
             <!-- Navigation -->
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: blue">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">App <strong>Card</strong></a>
+                    <a class="navbar-brand" href="#" style="color: white;">App <strong>Email</strong></a>
                 </div>
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -56,71 +56,13 @@
                 </ul> -->
 
                 <ul class="nav navbar-right navbar-top-links">
-                    <li class="dropdown navbar-inverse">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-bell fa-fw"></i> <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu dropdown-alerts">
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <i class="fa fa-comment fa-fw"></i> New Comment
-                                        <span class="pull-right text-muted small">4 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                        <span class="pull-right text-muted small">12 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                        <span class="pull-right text-muted small">4 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <i class="fa fa-tasks fa-fw"></i> New Task
-                                        <span class="pull-right text-muted small">4 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                        <span class="pull-right text-muted small">4 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a class="text-center" href="#">
-                                    <strong>See All Alerts</strong>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-user fa-fw"></i> secondtruth <b class="caret"></b>
+                            <i class="fa fa-user fa-fw" style="color: white;"></i>  <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <li><a href="<?= base_url('login/logout') ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -142,14 +84,18 @@
                                 <!-- /input-group -->
                             </li>
                             <li>
-                                <a href="index.html" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                <a href="<?= base_url('home') ?>" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                             </li>
                             
                             <li>
-                                <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+                                <a href="<?= base_url('data-buyer') ?>"><i class="fa fa-table fa-fw"></i> Data Buyer</a>
                             </li>
                             <li>
-                                <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                                <a href="<?= base_url('data-ultah') ?>"><i class="fa fa-edit fa-fw"></i> Data Birth Date</a>
+                            </li>
+
+                            <li>
+                                <a href="<?= base_url('data-send') ?>"><i class="fa fa-edit fa-send"></i> Data Send Email</a>
                             </li>
                             
                             

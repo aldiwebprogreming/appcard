@@ -12,7 +12,7 @@
                     <div class="row">
 
                         <div class="col-lg-12">
-                             <a href="<?= base_url() ?>tambah-admin" class="btn btn-primary" style="margin-bottom: 20px;">Tambah Admin</a>
+                             
                             
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -28,20 +28,21 @@
                                                    
                                                     <th>No</th>
                                                     <th>Username</th>
-                                                    <th>Role</th>
-                                                    <th>Date Post</th>
-                                                    <th>Opsi</th>
+                                                    <th>Email</th>
+                                                    <th>Birth Date</th>
+                                                    <th>Tgl Pengiriman</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php 
                                                     $no = 1;
-                                                 foreach ($admin as $data) { ?>
+                                                 foreach ($send as $data) { ?>
                                                 <tr class="odd gradeX">
                                                     <td><?= $no++; ?></td>
-                                                    <td><?= $data['username'] ?></td>
-                                                    <td><?= $data['role'] ?></td>
-                                                    <td><?= $data['date'] ?></td>
+                                                    <td><?= $data['nama_user'] ?></td>
+                                                    <td><?= $data['email'] ?></td>
+                                                    <td><?= $data['tgl_ultah'] ?></td>
+                                                    <td><?= $data['date_pengeriman'] ?></td>
                                                     <td>
                                                         <a onclick="return confirm('Yakin ingin menghapus')" href="<?= base_url() ?>Data_user/hapus?id=<?= $data['id'] ?>" class="btn btn-danger">Hapus</a>
                                                     </td>
